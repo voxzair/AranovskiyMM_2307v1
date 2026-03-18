@@ -1,5 +1,4 @@
-package navigation
-
+package ci.nsu.mobile.main.navigation
 
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.*
@@ -12,9 +11,7 @@ sealed class Screen(
 ) {
 
     object Home : Screen("home", "Home", Icons.Default.Home)
-
     object Profile : Screen("profile", "Profile", Icons.Default.Person)
-
     object Settings : Screen("settings", "Settings", Icons.Default.Settings)
 
 }

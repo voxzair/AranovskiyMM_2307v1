@@ -1,10 +1,14 @@
-package navigation
+package ci.nsu.mobile.main.navigation
 
-import androidx.compose.foundation.layout.padding
+import android.content.Intent
+import androidx.compose.foundation.layout.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.navigation.compose.*
+import ci.nsu.mobile.main.SecondActivity
 
 @Composable
 fun MainNavigation() {
@@ -24,17 +28,52 @@ fun MainNavigation() {
         ) {
 
             composable(Screen.Home.route) {
-                Text("Home Screen")
+                HomeScreen()
             }
 
             composable(Screen.Profile.route) {
-                Text("Profile Screen")
+                ProfileScreen()
             }
 
             composable(Screen.Settings.route) {
-                Text("Settings Screen")
+                SettingsScreen()
             }
-
         }
+    }
+}
+
+@Composable
+fun HomeScreen() {
+
+    val context = LocalContext.current
+
+    Box(
+        modifier = Modifier.fillMaxSize(),
+        contentAlignment = Alignment.Center
+    ) {
+
+        Button(onClick = {
+
+            val intent = Intent(context, SecondActivity::class.java)
+            intent.putExtra("message", "Hello from HomeScreen")
+            context.startActivity(intent)
+
+        }) {
+            Text("Open Second Activity")
+        }
+    }
+}
+
+@Composable
+fun ProfileScreen() {
+    Box(Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
+        Text("Profile Screen")
+    }
+}
+
+@Composable
+fun SettingsScreen() {
+    Box(Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
+        Text("Settings Screen")
     }
 }
